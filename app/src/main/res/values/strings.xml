@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BindApplication</string>
+    <string name="email">%s@gmail.com</string>
+</resources>
