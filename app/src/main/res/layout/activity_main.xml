@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <import type="android.view.View" />
@@ -13,49 +14,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="?attr/colorPrimaryDark"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <TextView
+        <br.com.infoterras.bindapplication.components.GlideImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="10pt"
+            app:src="@{user.avatar_url}"/>
+
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{user.firstName}" />
+            android:text="@{user.name}" />
 
-        <TextView
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{user.lastName}" />
+            android:text="@{user.bio}" />
 
-        <TextView
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(user.age)}" />
+            android:text="@{user.location}" />
 
-        <TextView
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/email, user.firstName+user.lastName)}" />
+            android:text="@{user.email}" />
 
-        <CheckBox
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onCheckedChanged="@{(cb, isChecked) -> user.onStatusChange(user, isChecked)}"
-            android:text="Active" />
+            android:text="@{user.blog}" />
 
-        <TextView
-            android:text="ANDROID DATABIND"
-            android:textColor="@android:color/holo_red_dark"
-            android:visibility="@{@bool/enable ? View.GONE : View.VISIBLE}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> user.onSaveUser(user)}"
-            android:text="Save" />
+            android:text= "@{String.format(@string/public_repos, user.public_repos)}" />
+
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "@{String.format(@string/followers, user.followers)}" />
+
+        <TextView style="@style/TextAppearanceColorTheme.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "@{String.format(@string/following, user.following)}" />
 
     </LinearLayout>
 </layout>

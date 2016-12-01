@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">BindApplication</string>
-    <string name="email">%s@gmail.com</string>
+    <string name="public_repos">Repositórios plublicos (%s)</string>
+    <string name="followers">Seguindo (%s)</string>
+    <string name="following">Seguidores (%s)</string>
 </resources>

@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        User user = new User("Gustavo", "Terras", 28);
+
+        User user = (User) getIntent().getSerializableExtra("extra");
+
         binding.setUser(user);
     }
 }

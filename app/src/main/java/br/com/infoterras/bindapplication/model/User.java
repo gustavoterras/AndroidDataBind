@@ -12,57 +12,100 @@ public class User implements Serializable {
 
     private static final String TAG = User.class.getSimpleName();
 
-    private String firstName;
-    private String lastName;
-    private boolean active;
-    private int age;
+    private String name;
+    private String avatar_url;
+    private String location;
+    private String email;
+    private String bio;
+    private String public_repos;
+    private String followers;
+    private String following;
+    private String blog;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+    public User(String name, String avatar_url, String location, String email, String bio, String public_repos, String followers, String following, String blog) {
+        this.name = name;
+        this.avatar_url = avatar_url;
+        this.location = location;
+        this.email = email;
+        this.bio = bio;
+        this.public_repos = public_repos;
+        this.followers = followers;
+        this.following = following;
+        this.blog = blog;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getAvatar_url() {
+        return avatar_url;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setAvatar_url(String avatar_url) {
+        this.avatar_url = avatar_url;
     }
 
-    public int getAge() {
-        return age;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getEmail() {
+        return email;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void onSaveUser(User user){
-        Log.d(TAG, "user saved!");
+    public String getBio() {
+        return bio;
     }
 
-    public void onStatusChange(User user, boolean active){
-        Log.d(TAG, "user status change! > " + user.getFirstName() + " status: " + active);
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getPublic_repos() {
+        return public_repos;
+    }
+
+    public void setPublic_repos(String public_repos) {
+        this.public_repos = public_repos;
+    }
+
+    public String getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(String followers) {
+        this.followers = followers;
+    }
+
+    public String getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(String following) {
+        this.following = following;
+    }
+
+    public String getBlog() {
+        return blog;
+    }
+
+    public void setBlog(String blog) {
+        this.blog = blog;
     }
 }
