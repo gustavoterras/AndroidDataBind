@@ -1,7 +1,5 @@
 package br.com.infoterras.bindapplication.model;
 
-import android.util.Log;
-
 import java.io.Serializable;
 
 /**
@@ -10,9 +8,8 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private static final String TAG = User.class.getSimpleName();
-
     private String name;
+    private String login;
     private String avatar_url;
     private String location;
     private String email;
@@ -25,8 +22,9 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String avatar_url, String location, String email, String bio, String public_repos, String followers, String following, String blog) {
+    public User(String name, String login, String avatar_url, String location, String email, String bio, String public_repos, String followers, String following, String blog) {
         this.name = name;
+        this.login = login;
         this.avatar_url = avatar_url;
         this.location = location;
         this.email = email;
@@ -35,6 +33,14 @@ public class User implements Serializable {
         this.followers = followers;
         this.following = following;
         this.blog = blog;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getName() {

@@ -1,5 +1,8 @@
 package br.com.infoterras.bindapplication.network;
 
+import java.util.List;
+
+import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +35,21 @@ public class ConsumerService {
 
             @Override
             public void onFailure(Call<User> call, Throwable throwable) {
+                listener.onFailure(throwable);
+            }
+        });
+    }
+
+    public void getRepositoryByUser(String username, final int requestCode){
+        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
+        client.repository(username).enqueue(new Callback<List<Repository>>() {
+            @Override
+            public void onResponse(Call<List<Repository>> call, Response<List<Repository>> response) {
+                listener.onSuccess(response.body(), requestCode);
+            }
+
+            @Override
+            public void onFailure(Call<List<Repository>> call, Throwable throwable) {
                 listener.onFailure(throwable);
             }
         });
