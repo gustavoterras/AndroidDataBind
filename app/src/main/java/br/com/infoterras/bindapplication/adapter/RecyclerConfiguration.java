@@ -28,7 +28,7 @@ public class RecyclerConfiguration extends BaseObservable {
     }
 
     @Bindable
-    public RecyclerView.ItemAnimator getItemAnimator() {
+    private RecyclerView.ItemAnimator getItemAnimator() {
         return itemAnimator;
     }
 

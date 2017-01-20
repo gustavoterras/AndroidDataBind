@@ -28,6 +28,11 @@ public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBind
         this.onItemClickListener = onItemClickListener;
     }
 
+    public void setList(AbstractList<T> items){
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
     public RecyclerBindingAdapter(int holderLayout, int variableId, AbstractList<T> items) {
         this.holderLayout = holderLayout;
         this.variableId = variableId;
@@ -52,6 +57,7 @@ public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBind
         });
 
         holder.getBinding().setVariable(variableId, item);
+        holder.getBinding().executePendingBindings();
     }
 
     @Override
@@ -59,10 +65,10 @@ public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBind
         return items.size();
     }
 
-    public static class BindingHolder extends RecyclerView.ViewHolder {
+    static class BindingHolder extends RecyclerView.ViewHolder {
         private ViewDataBinding binding;
 
-        public BindingHolder(View v) {
+        BindingHolder(View v) {
             super(v);
             binding = DataBindingUtil.bind(v);
         }

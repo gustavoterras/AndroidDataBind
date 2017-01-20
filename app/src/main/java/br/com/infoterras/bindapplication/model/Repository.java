@@ -9,18 +9,16 @@ import java.io.Serializable;
 public class Repository implements Serializable {
 
     private String name;
-    private String html_url;
+    private String description;
     private String language;
-    private String clone_url;
 
     public Repository() {
     }
 
-    public Repository(String name, String html_url, String language, String clone_url) {
+    public Repository(String name, String description, String language) {
         this.name = name;
-        this.html_url = html_url;
         this.language = language;
-        this.clone_url = clone_url;
+        this.description = description;
     }
 
     public String getName() {
@@ -31,12 +29,12 @@ public class Repository implements Serializable {
         this.name = name;
     }
 
-    public String getHtml_url() {
-        return html_url;
+    public String getDescription() {
+        return description;
     }
 
-    public void setHtml_url(String html_url) {
-        this.html_url = html_url;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getLanguage() {
@@ -45,13 +43,5 @@ public class Repository implements Serializable {
 
     public void setLanguage(String language) {
         this.language = language;
-    }
-
-    public String getClone_url() {
-        return clone_url;
-    }
-
-    public void setClone_url(String clone_url) {
-        this.clone_url = clone_url;
     }
 }
