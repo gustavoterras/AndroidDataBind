@@ -25,6 +25,7 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <br.com.infoterras.bindapplication.components.GlideImageView
+                android:transitionName="image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:src="@{viewModel.user.avatar_url}" />

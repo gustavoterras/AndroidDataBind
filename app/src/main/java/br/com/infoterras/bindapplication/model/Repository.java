@@ -1,5 +1,7 @@
 package br.com.infoterras.bindapplication.model;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 /**
@@ -13,7 +15,7 @@ public class Repository implements Serializable {
     private String language;
 
     public boolean isJava(){
-        return this.language.equalsIgnoreCase("JAVA");
+        return !TextUtils.isEmpty(this.language) && this.language.equalsIgnoreCase("JAVA");
     }
 
     public Repository() {
