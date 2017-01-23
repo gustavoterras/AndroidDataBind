@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="android.view.View" />
+        <import type="br.com.infoterras.bindapplication.util.BuildUtil"/>
 
         <variable
-            name="user"
-            type="br.com.infoterras.bindapplication.model.User" />
+            name="build"
+            type="BuildUtil"/>
     </data>
 
     <LinearLayout
@@ -69,6 +69,13 @@
 
         </LinearLayout>
 
+        <TextView
+            android:text="@{String.format(@string/build_content, build.versionCode() + '-' + (build.isDebug ? @string/debug : @string/release))}"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
     </LinearLayout>
 
 </layout>

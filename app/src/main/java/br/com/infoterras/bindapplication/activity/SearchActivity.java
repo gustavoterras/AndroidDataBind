@@ -2,6 +2,7 @@ package br.com.infoterras.bindapplication.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,8 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.infoterras.bindapplication.R;
+import br.com.infoterras.bindapplication.databinding.ActivitySearchBinding;
 import br.com.infoterras.bindapplication.model.User;
 import br.com.infoterras.bindapplication.network.ConsumerService;
+import br.com.infoterras.bindapplication.util.BuildUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,6 +34,9 @@ public class SearchActivity extends AppCompatActivity implements ConsumerService
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        ActivitySearchBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
+        binding.setBuild(new BuildUtil());
 
         ButterKnife.bind(this);
     }
