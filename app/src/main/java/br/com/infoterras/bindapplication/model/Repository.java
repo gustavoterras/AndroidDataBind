@@ -12,6 +12,10 @@ public class Repository implements Serializable {
     private String description;
     private String language;
 
+    public boolean isJava(){
+        return this.language.equalsIgnoreCase("JAVA");
+    }
+
     public Repository() {
     }
 

@@ -20,8 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="2"
             android:gravity="center"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
@@ -37,28 +37,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:padding="10pt"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10pt">
 
-            <EditText
-                android:id="@+id/edt_search"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Pesquisar"
-                app:theme="@style/TextAppearanceColorTheme.EditText" />
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/btn_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5pt"
-                android:background="@drawable/shape_circular_button"
-                android:contentDescription="@null"
-                android:padding="5sp"
-                android:onClick="onClick"
-                android:src="@drawable/ic_search" />
+                <EditText
+                    android:id="@+id/edt_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Pesquisar"
+                    app:theme="@style/TextAppearanceColorTheme.EditText" />
+
+                <ImageButton
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5pt"
+                    android:background="@drawable/shape_circular_button"
+                    android:contentDescription="@null"
+                    android:onClick="onClick"
+                    android:padding="5sp"
+                    android:src="@drawable/ic_search" />
+            </LinearLayout>
 
         </LinearLayout>
 

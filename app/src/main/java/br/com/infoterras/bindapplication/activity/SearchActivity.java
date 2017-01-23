@@ -23,7 +23,7 @@ public class SearchActivity extends AppCompatActivity implements ConsumerService
 
     private static final int REQUEST_CODE = 563;
     private ConsumerService consumerService;
-    ProgressDialog progress;
+    private ProgressDialog progress;
 
     @BindView(R.id.edt_search) EditText edtSearch;
 
