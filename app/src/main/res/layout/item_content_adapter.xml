@@ -3,13 +3,11 @@
 
     <data>
 
-        <import type="br.com.infoterras.bindapplication.model.Repository" />
+        <import type="br.com.infoterras.bindapplication.model.Content" />
 
         <variable
-            name="repository"
-            type="Repository" />
-
-        <import type="android.view.View" />
+            name="content"
+            type="Content" />
 
     </data>
 
@@ -37,7 +35,7 @@
                 style="@style/TextAppearanceColorTheme.TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{repository.name}"
+                android:text="@{content.name}"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 tools:text="Name" />
@@ -47,19 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:text="@{repository.description}"
+                android:text="@{content.type}"
                 tools:text="Description" />
-
-            <TextView
-                style="@style/TextAppearanceColorTheme.TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{repository.language}"
-                android:textAllCaps="true"
-                android:layout_gravity="end"
-                android:gravity="end"
-                android:textColor="@{repository.java ? @color/colorAccent : @android:color/holo_blue_dark}"
-                tools:text="Language" />
 
         </LinearLayout>
 

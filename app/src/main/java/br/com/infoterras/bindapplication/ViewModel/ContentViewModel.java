@@ -1,18 +1,17 @@
 package br.com.infoterras.bindapplication.viewModel;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import br.com.infoterras.bindapplication.BR;
 import br.com.infoterras.bindapplication.R;
-import br.com.infoterras.bindapplication.activity.ContentActivity;
 import br.com.infoterras.bindapplication.adapter.RecyclerBindingAdapter;
 import br.com.infoterras.bindapplication.adapter.RecyclerConfiguration;
+import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
 
@@ -20,42 +19,39 @@ import br.com.infoterras.bindapplication.model.User;
  * Created by Gustavo on 28/11/2016.
  */
 
-public class UserViewModel implements RecyclerBindingAdapter.OnItemClickListener<Repository>{
+public class ContentViewModel implements RecyclerBindingAdapter.OnItemClickListener<Content>{
 
     public User user;
+    public Repository repository;
     private Context context;
     public RecyclerConfiguration recyclerConfiguration;
 
-    public UserViewModel(Context context, User user) {
+    public ContentViewModel(Context context, User user, Repository repository) {
         this.user = user;
         this.context = context;
+        this.repository = repository;
         this.recyclerConfiguration = new RecyclerConfiguration();
 
         initRecycler();
     }
 
     private void initRecycler() {
-        RecyclerBindingAdapter<Repository> adapter = getAdapter();
+        RecyclerBindingAdapter<Content> adapter = getAdapter();
 
         recyclerConfiguration.setLayoutManager(new LinearLayoutManager(context));
         recyclerConfiguration.setItemAnimator(new DefaultItemAnimator());
         recyclerConfiguration.setAdapter(adapter);
     }
 
-    private RecyclerBindingAdapter<Repository> getAdapter() {
-        ArrayList<Repository> data = new ArrayList<>();
-        RecyclerBindingAdapter<Repository> adapter = new RecyclerBindingAdapter<>(R.layout.item_repository_adapter, BR.repository, data);
+    private RecyclerBindingAdapter<Content> getAdapter() {
+        ArrayList<Content> data = new ArrayList<>();
+        RecyclerBindingAdapter<Content> adapter = new RecyclerBindingAdapter<>(R.layout.item_content_adapter, BR.content, data);
         adapter.setOnItemClickListener(this);
         return adapter;
     }
 
     @Override
-    public void onItemClick(int position, Repository repository) {
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("user", user);
-        bundle.putSerializable("repository", repository);
-
-        context.startActivity(new Intent(context, ContentActivity.class).putExtra("extra", bundle));
+    public void onItemClick(int position, Content item) {
+        Toast.makeText(context, item.getName(), Toast.LENGTH_SHORT).show();
     }
 }

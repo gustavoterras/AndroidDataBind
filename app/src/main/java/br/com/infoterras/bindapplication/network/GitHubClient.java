@@ -2,6 +2,7 @@ package br.com.infoterras.bindapplication.network;
 
 import java.util.List;
 
+import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
 import retrofit2.Call;
@@ -19,5 +20,8 @@ public interface GitHubClient {
 
     @GET("/users/{username}/repos")
     Call<List<Repository>> repository(@Path("username") String owner);
+
+    @GET("/repos/{username}/{repository}/contents")
+    Call<List<Content>> content(@Path("username") String owner, @Path("repository") String repository);
 
 }

@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import br.com.infoterras.bindapplication.R;
-import br.com.infoterras.bindapplication.ViewModel.UserViewModel;
+import br.com.infoterras.bindapplication.viewModel.UserViewModel;
 import br.com.infoterras.bindapplication.adapter.RecyclerBindingAdapter;
 import br.com.infoterras.bindapplication.databinding.ActivityMainBinding;
 import br.com.infoterras.bindapplication.model.Repository;

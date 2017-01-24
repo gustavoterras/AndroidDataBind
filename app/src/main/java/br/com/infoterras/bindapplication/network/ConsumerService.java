@@ -2,6 +2,7 @@ package br.com.infoterras.bindapplication.network;
 
 import java.util.List;
 
+import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
 import retrofit2.Call;
@@ -50,6 +51,21 @@ public class ConsumerService {
 
             @Override
             public void onFailure(Call<List<Repository>> call, Throwable throwable) {
+                listener.onFailure(throwable);
+            }
+        });
+    }
+
+    public void getContentByRepository(String username, String repositoryName, final int requestCode){
+        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
+        client.content(username, repositoryName).enqueue(new Callback<List<Content>>() {
+            @Override
+            public void onResponse(Call<List<Content>> call, Response<List<Content>> response) {
+                listener.onSuccess(response.body(), requestCode);
+            }
+
+            @Override
+            public void onFailure(Call<List<Content>> call, Throwable throwable) {
                 listener.onFailure(throwable);
             }
         });
