@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "939495437472",
+    "firebase_url": "https://githubandroiddatabinding.firebaseio.com",
+    "project_id": "githubandroiddatabinding",
+    "storage_bucket": "githubandroiddatabinding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939495437472:android:ad5bf7c62b37a0a6",
+        "android_client_info": {
+          "package_name": "br.com.infoterras.bindapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939495437472-bqnpse3tsusinkvqkmh7hec2ls8kf58o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.infoterras.bindapplication",
+            "certificate_hash": "9BFA58973D9413C51689131BAB44D9C2B2754C07"
+          }
+        },
+        {
+          "client_id": "939495437472-u0dnjjc8a3aggr9617d64kfiq1fdinb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALQWvJyhLiBk-Y1u490lFggphEk-fqR8Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939495437472-u0dnjjc8a3aggr9617d64kfiq1fdinb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

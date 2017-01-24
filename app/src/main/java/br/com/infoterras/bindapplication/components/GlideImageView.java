@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import br.com.infoterras.bindapplication.R;
+
 /**
  * Created by Gustavo on 01/12/2016.
  */
@@ -40,6 +42,7 @@ public class GlideImageView extends ImageView {
                 .bitmapTransform(new CropCircleTransformation(view.getContext()))
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(view.getContext().getDrawable(R.drawable.ic_github))
                 .into(view);
     }
 }
