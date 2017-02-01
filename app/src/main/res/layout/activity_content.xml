@@ -12,11 +12,24 @@
 
     </data>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
+    <TextView
+        style="@style/TextAppearanceColorTheme.TextView"
+        android:text="@{String.format(@string/path, contentViewModel.repository.name, contentViewModel.content != null ? contentViewModel.content.path : ' ')}"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
         app:configuration="@{contentViewModel.recyclerConfiguration}" />
-
+    </LinearLayout>
 </layout>

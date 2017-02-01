@@ -15,12 +15,15 @@ import br.com.infoterras.bindapplication.adapter.RecyclerBindingAdapter;
 import br.com.infoterras.bindapplication.adapter.RecyclerConfiguration;
 import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
+import br.com.infoterras.bindapplication.network.ConsumerService;
 
 /**
  * Created by Gustavo on 28/11/2016.
  */
 
-public class UserViewModel implements RecyclerBindingAdapter.OnItemClickListener<Repository>{
+public class UserViewModel implements RecyclerBindingAdapter.OnItemClickListener<Repository>, ConsumerService.OnTaskCompleted<ArrayList<Repository>>{
+
+    private static final int REQUEST_CODE_REPOSITORY = 932;
 
     public User user;
     private Context context;
@@ -32,6 +35,10 @@ public class UserViewModel implements RecyclerBindingAdapter.OnItemClickListener
         this.recyclerConfiguration = new RecyclerConfiguration();
 
         initRecycler();
+
+        ConsumerService consumerService = new ConsumerService();
+        consumerService.setOnTaskCompleted(this);
+        consumerService.getRepositoryByUser(user.getLogin(), REQUEST_CODE_REPOSITORY);
     }
 
     private void initRecycler() {
@@ -57,5 +64,17 @@ public class UserViewModel implements RecyclerBindingAdapter.OnItemClickListener
         bundle.putSerializable("repository", repository);
 
         context.startActivity(new Intent(context, ContentActivity.class).putExtra("extra", bundle));
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void onSuccess(ArrayList<Repository> response, int requestCode) {
+        RecyclerBindingAdapter<Repository> adapter = (RecyclerBindingAdapter<Repository>) recyclerConfiguration.getAdapter();
+        adapter.setList(response);
+    }
+
+    @Override
+    public void onFailure(Throwable error) {
+
     }
 }

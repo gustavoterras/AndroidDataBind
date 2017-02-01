@@ -20,10 +20,8 @@ import br.com.infoterras.bindapplication.network.ConsumerService;
  * Created by Gustavo on 01/12/2016.
  */
 
-public class MainActivity extends AppCompatActivity implements ConsumerService.OnTaskCompleted<ArrayList<Repository>>{
+public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_REPOSITORY = 932;
-    private UserViewModel userViewModel;
     private User user;
 
     @Override
@@ -33,19 +31,10 @@ public class MainActivity extends AppCompatActivity implements ConsumerService.O
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         user = (User) getIntent().getSerializableExtra("extra");
-        userViewModel = new UserViewModel(this, user);
+        UserViewModel userViewModel = new UserViewModel(this, user);
         binding.setViewModel(userViewModel);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         initCollapsingToolbar();
-
-        ConsumerService consumerService = new ConsumerService();
-        consumerService.setOnTaskCompleted(this);
-        consumerService.getRepositoryByUser(user.getLogin(), REQUEST_CODE_REPOSITORY);
     }
 
     private void initCollapsingToolbar() {
@@ -54,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements ConsumerService.O
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         appBarLayout.setExpanded(true);
 
-        // hiding & showing the title when toolbar expanded & collapsed
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;
@@ -73,17 +61,5 @@ public class MainActivity extends AppCompatActivity implements ConsumerService.O
                 }
             }
         });
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public void onSuccess(ArrayList<Repository> response, int requestCode) {
-        RecyclerBindingAdapter<Repository> adapter = (RecyclerBindingAdapter<Repository>) userViewModel.recyclerConfiguration.getAdapter();
-        adapter.setList(response);
-    }
-
-    @Override
-    public void onFailure(Throwable error) {
-
     }
 }

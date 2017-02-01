@@ -1,38 +1,73 @@
 package br.com.infoterras.bindapplication.viewModel;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import br.com.infoterras.bindapplication.BR;
 import br.com.infoterras.bindapplication.R;
+import br.com.infoterras.bindapplication.activity.CodeViewActivity;
+import br.com.infoterras.bindapplication.activity.ContentActivity;
 import br.com.infoterras.bindapplication.adapter.RecyclerBindingAdapter;
 import br.com.infoterras.bindapplication.adapter.RecyclerConfiguration;
 import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
+import br.com.infoterras.bindapplication.network.ConsumerService;
 
 /**
  * Created by Gustavo on 28/11/2016.
  */
 
-public class ContentViewModel implements RecyclerBindingAdapter.OnItemClickListener<Content>{
+public class ContentViewModel implements RecyclerBindingAdapter.OnItemClickListener<Content>, ConsumerService.OnTaskCompleted<ArrayList<Content>>{
+
+    private static final int REQUEST_CODE_CONTENT = 513;
 
     public User user;
-    public Repository repository;
+    public Content content;
     private Context context;
+    public Repository repository;
     public RecyclerConfiguration recyclerConfiguration;
 
-    public ContentViewModel(Context context, User user, Repository repository) {
-        this.user = user;
+    public ContentViewModel(Context context, Bundle bundle) {
         this.context = context;
-        this.repository = repository;
+        this.user = (User) bundle.getSerializable("user");
+        this.repository = (Repository) bundle.getSerializable("repository");
         this.recyclerConfiguration = new RecyclerConfiguration();
 
         initRecycler();
+
+        ConsumerService consumerService = new ConsumerService();
+        consumerService.setOnTaskCompleted(this);
+
+        if(bundle.containsKey("item")) {
+            content = (Content) bundle.getSerializable("item");
+            consumerService.getContentByPath(user.getLogin(), repository.getName(), content.getPath(), REQUEST_CODE_CONTENT);
+        }else
+            consumerService.getContentByRepository(user.getLogin(), repository.getName(), REQUEST_CODE_CONTENT);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void onSuccess(ArrayList<Content> response, int requestCode) {
+        RecyclerBindingAdapter<Content> adapter = (RecyclerBindingAdapter<Content>) recyclerConfiguration.getAdapter();
+        adapter.setList(response);
+    }
+
+    @Override
+    public void onFailure(Throwable error) {
+
     }
 
     private void initRecycler() {
@@ -52,6 +87,15 @@ public class ContentViewModel implements RecyclerBindingAdapter.OnItemClickListe
 
     @Override
     public void onItemClick(int position, Content item) {
-        Toast.makeText(context, item.getName(), Toast.LENGTH_SHORT).show();
+        if(item.getType().equals("file"))
+            context.startActivity(new Intent(context, CodeViewActivity.class).putExtra("extra", item));
+        else {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("user", user);
+            bundle.putSerializable("repository", repository);
+            bundle.putSerializable("item", item);
+
+            context.startActivity(new Intent(context, ContentActivity.class).putExtra("extra", bundle));
+        }
     }
 }

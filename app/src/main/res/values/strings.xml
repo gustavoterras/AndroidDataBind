@@ -3,7 +3,8 @@
     <string name="public_repos">Repositórios publicos (%s)</string>
     <string name="followers">Seguindo (%s)</string>
     <string name="following">Seguidores (%s)</string>
-    <string name="build_content">versão %s</string>
+    <string name="build_content">Versão %s</string>
+    <string name="path" formatted="false">%s/%s</string>
     <string name="debug">DEBUG</string>
     <string name="release">RELEASE</string>
 </resources>

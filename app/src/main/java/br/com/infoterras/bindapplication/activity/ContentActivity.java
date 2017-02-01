@@ -15,12 +15,7 @@ import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
 import br.com.infoterras.bindapplication.network.ConsumerService;
 
-public class ContentActivity extends AppCompatActivity implements ConsumerService.OnTaskCompleted<ArrayList<Content>>{
-
-    private static final int REQUEST_CODE_CONTENT = 513;
-    private ContentViewModel contentViewModel;
-    private Repository repository;
-    private User user;
+public class ContentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,32 +24,9 @@ public class ContentActivity extends AppCompatActivity implements ConsumerServic
 
         Bundle bundle = getIntent().getBundleExtra("extra");
 
-        user = (User) bundle.getSerializable("user");
-        repository = (Repository) bundle.getSerializable("repository");
-        contentViewModel = new ContentViewModel(this, user, repository);
+        ContentViewModel contentViewModel = new ContentViewModel(this, bundle);
 
         ActivityContentBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_content);
         binding.setContentViewModel(contentViewModel);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        ConsumerService consumerService = new ConsumerService();
-        consumerService.setOnTaskCompleted(this);
-        consumerService.getContentByRepository(user.getLogin(), repository.getName(), REQUEST_CODE_CONTENT);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public void onSuccess(ArrayList<Content> response, int requestCode) {
-        RecyclerBindingAdapter<Content> adapter = (RecyclerBindingAdapter<Content>) contentViewModel.recyclerConfiguration.getAdapter();
-        adapter.setList(response);
-    }
-
-    @Override
-    public void onFailure(Throwable error) {
-
     }
 }

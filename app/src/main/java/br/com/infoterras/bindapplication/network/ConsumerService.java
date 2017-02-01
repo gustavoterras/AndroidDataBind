@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,6 +67,36 @@ public class ConsumerService {
 
             @Override
             public void onFailure(Call<List<Content>> call, Throwable throwable) {
+                listener.onFailure(throwable);
+            }
+        });
+    }
+
+    public void getContentByPath(String username, String repositoryName, String path, final int requestCode){
+        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
+        client.content(username, repositoryName, path).enqueue(new Callback<List<Content>>() {
+            @Override
+            public void onResponse(Call<List<Content>> call, Response<List<Content>> response) {
+                listener.onSuccess(response.body(), requestCode);
+            }
+
+            @Override
+            public void onFailure(Call<List<Content>> call, Throwable throwable) {
+                listener.onFailure(throwable);
+            }
+        });
+    }
+
+    public void getFile(String url, final int requestCode){
+        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
+        client.file(url).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                listener.onSuccess(response.body(), requestCode);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 listener.onFailure(throwable);
             }
         });
