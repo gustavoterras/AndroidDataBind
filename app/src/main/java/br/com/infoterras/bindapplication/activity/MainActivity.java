@@ -6,15 +6,10 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 import br.com.infoterras.bindapplication.R;
-import br.com.infoterras.bindapplication.viewModel.UserViewModel;
-import br.com.infoterras.bindapplication.adapter.RecyclerBindingAdapter;
 import br.com.infoterras.bindapplication.databinding.ActivityMainBinding;
-import br.com.infoterras.bindapplication.model.Repository;
 import br.com.infoterras.bindapplication.model.User;
-import br.com.infoterras.bindapplication.network.ConsumerService;
+import br.com.infoterras.bindapplication.viewModel.UserViewModel;
 
 /**
  * Created by Gustavo on 01/12/2016.
