@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import java.util.AbstractList;
 import java.util.ArrayList;
 
+import br.com.infoterras.bindapplication.R;
 import br.com.infoterras.bindapplication.model.Repository;
 
 /**
@@ -65,7 +66,7 @@ public class RecyclerBindingAdapter<T> extends RecyclerView.Adapter<RecyclerBind
         holder.getBinding().executePendingBindings();
 
         if (position > lastPosition) {
-            Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
+            Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.enter_from_left);
             holder.itemView.startAnimation(animation);
         }
 
