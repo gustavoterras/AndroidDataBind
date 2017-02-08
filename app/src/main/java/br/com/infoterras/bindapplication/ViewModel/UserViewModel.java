@@ -2,9 +2,12 @@ package br.com.infoterras.bindapplication.viewModel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.BindingAdapter;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -64,6 +67,11 @@ public class UserViewModel implements RecyclerBindingAdapter.OnItemClickListener
         bundle.putSerializable("repository", repository);
 
         context.startActivity(new Intent(context, ContentActivity.class).putExtra("extra", bundle));
+    }
+
+    @BindingAdapter("app:visibility")
+    public static void setVisibility(View view, String value) {
+        view.setVisibility(TextUtils.isEmpty(value) ? View.GONE: View.VISIBLE);
     }
 
     @SuppressWarnings("unchecked")

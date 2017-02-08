@@ -71,24 +71,28 @@
                         android:textSize="18sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:visibility="@{viewModel.user.name}"
                         android:text="@{viewModel.user.name}" />
 
                     <TextView
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:visibility="@{viewModel.user.bio}"
                         android:text="@{viewModel.user.bio}" />
 
                     <TextView
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:visibility="@{viewModel.user.location}"
                         android:text="@{viewModel.user.location}" />
 
                     <TextView
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:visibility="@{viewModel.user.email}"
                         android:text="@{viewModel.user.email}" />
 
                     <TextView
@@ -96,6 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autoLink="web"
+                        app:visibility="@{viewModel.user.blog}"
                         android:text="@{viewModel.user.blog}" />
 
                     <TextView
