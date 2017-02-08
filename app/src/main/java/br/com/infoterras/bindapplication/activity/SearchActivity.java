@@ -1,5 +1,6 @@
 package br.com.infoterras.bindapplication.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -55,6 +56,8 @@ public class SearchActivity extends AppCompatActivity implements ConsumerService
     public void onClick(View view){
         progress.setVisibility(View.VISIBLE);
         consumerService.getUser(edtSearch.getText().toString(), REQUEST_CODE);
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override
