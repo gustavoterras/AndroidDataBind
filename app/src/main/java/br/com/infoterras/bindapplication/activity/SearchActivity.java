@@ -18,32 +18,29 @@ import br.com.infoterras.bindapplication.databinding.ActivitySearchBinding;
 import br.com.infoterras.bindapplication.model.User;
 import br.com.infoterras.bindapplication.network.ConsumerService;
 import br.com.infoterras.bindapplication.util.BuildUtil;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by Gustavo on 01/12/2016.
  */
 
-public class SearchActivity extends AppCompatActivity implements ConsumerService.OnTaskCompleted<User>{
+public class SearchActivity extends AppCompatActivity implements ConsumerService.OnTaskCompleted<User> {
 
     private static final int REQUEST_CODE = 563;
     private ConsumerService consumerService;
-
-    @BindView(R.id.progress) ProgressBar progress;
-    @BindView(R.id.edt_search) EditText edtSearch;
-    @BindView(R.id.img_logo) ImageView imgLogo;
+    private ProgressBar progress;
+    private EditText edtSearch;
+    private ImageView imgLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
 
         ActivitySearchBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_search);
         binding.setBuild(new BuildUtil());
 
-        ButterKnife.bind(this);
+        progress = binding.progress;
+        edtSearch = binding.edtSearch;
+        imgLogo = binding.imgLogo;
     }
 
     @Override
@@ -53,7 +50,6 @@ public class SearchActivity extends AppCompatActivity implements ConsumerService
         consumerService.setOnTaskCompleted(this);
     }
 
-    @OnClick(R.id.btn_search)
     public void onClick(View view){
         progress.setVisibility(View.VISIBLE);
         consumerService.getUser(edtSearch.getText().toString(), REQUEST_CODE);

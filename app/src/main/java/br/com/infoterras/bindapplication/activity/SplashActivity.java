@@ -1,6 +1,7 @@
 package br.com.infoterras.bindapplication.activity;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Handler;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,23 +12,24 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import br.com.infoterras.bindapplication.R;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import br.com.infoterras.bindapplication.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_DISPLAY_LENGTH = 3500;
     private static boolean hasOpened = false;
 
-    @BindView(R.id.tv_message1) TextView txt1;
-    @BindView(R.id.tv_message2) TextView txt2;
+    private TextView txt1;
+    private TextView txt2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
 
-        ButterKnife.bind(this);
+        ActivitySplashBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+
+        txt1 = binding.tvMessage1;
+        txt2 = binding.tvMessage2;
     }
 
     @Override

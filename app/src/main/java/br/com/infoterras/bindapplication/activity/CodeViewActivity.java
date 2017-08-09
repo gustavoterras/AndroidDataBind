@@ -1,5 +1,6 @@
 package br.com.infoterras.bindapplication.activity;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,27 +11,29 @@ import android.widget.FrameLayout;
 import java.io.IOException;
 
 import br.com.infoterras.bindapplication.R;
+import br.com.infoterras.bindapplication.databinding.ActivityCodeViewBinding;
 import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.network.ConsumerService;
 import br.tiagohm.codeview.CodeView;
 import br.tiagohm.codeview.HightlightJs;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.ResponseBody;
 
 public class CodeViewActivity extends AppCompatActivity implements ConsumerService.OnTaskCompleted<ResponseBody> {
 
     private static final int FILE_REQUEST_CODE = 627;
 
-    @BindView(R.id.code_view) CodeView codeView;
-    @BindView(R.id.progress_layout) FrameLayout progressLayout;
+    private CodeView codeView;
+    private FrameLayout progressLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_view);
 
-        ButterKnife.bind(this);
+        ActivityCodeViewBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_code_view);
+
+        codeView = binding.codeView;
+        progressLayout = binding.progressLayout;
 
         Content file = (Content) getIntent().getSerializableExtra("extra");
 
