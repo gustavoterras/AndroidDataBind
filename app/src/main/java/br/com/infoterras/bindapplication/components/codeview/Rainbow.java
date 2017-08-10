@@ -1,7 +1,6 @@
-package br.tiagohm.codeview;
+package br.com.infoterras.bindapplication.components.codeview;
 
-public class Rainbow extends SyntaxHighlighter
-{
+public class Rainbow extends SyntaxHighlighter {
     private static final String HTML_SCRIPT =
             "<!DOCTYPE html>\n" +
                     "<html>\n" +
@@ -29,45 +28,37 @@ public class Rainbow extends SyntaxHighlighter
     private static String CODE_CLASS = "";
     private static String CODE_TEXT = "";
 
-    public Rainbow()
-    {
+    public Rainbow() {
         setTheme(Themes.DEFAULT);
     }
 
     @Override
-    public Language[] getSupportedLanguages()
-    {
+    public Language[] getSupportedLanguages() {
         return Languages.values();
     }
 
     @Override
-    public Theme[] getSupportedThemes()
-    {
+    public Theme[] getSupportedThemes() {
         return Themes.values();
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Rainbow";
     }
 
     @Override
-    public String getHtmlCode(String code, Language lang, int textSize)
-    {
+    public String getHtmlCode(String code, Language lang, int textSize) {
         BODY_CSS = "margin: 0px !important; display: inline-block;";
         CODE_CSS = "font-size: " + textSize + "px !important; line-height: 1.2 !important;";
         PRE_CSS = " margin-bottom: -5px !important; font-size: " + textSize + "px !important; line-height: 1.2 !important;";
         CODE_CLASS = "language-" + lang.getLanguageName();
         CODE_TEXT = code;
 
-        if(isShowLineNumber())
-        {
+        if (isShowLineNumber()) {
             OTHERS_SCRIPTS = "<script src=\"" + LN_JS_PATH + "\"></script>";
             OTHERS_SCRIPTS += "<link href=\"" + LN_CSS_PATH + "\" rel=\"stylesheet\" />\n";
-        }
-        else
-        {
+        } else {
             OTHERS_SCRIPTS = "";
         }
 
@@ -81,8 +72,7 @@ public class Rainbow extends SyntaxHighlighter
                 OTHERS_SCRIPTS);
     }
 
-    public enum Themes implements Theme
-    {
+    public enum Themes implements Theme {
         DEFAULT("rainbow"),
         ALL_HALLOWS_EVE("all-hallows-eve"),
         BLACKBOARD("blackboard"),
@@ -107,20 +97,17 @@ public class Rainbow extends SyntaxHighlighter
 
         private final String name;
 
-        Themes(String name)
-        {
+        Themes(String name) {
             this.name = name;
         }
 
         @Override
-        public String getPath()
-        {
+        public String getPath() {
             return "file:///android_asset/rainbow/styles/" + name + ".css";
         }
     }
 
-    public enum Languages implements Language
-    {
+    public enum Languages implements Language {
         CSS("css"),
         JAVASCRIPT("javascript"),
         C("c"),
@@ -144,14 +131,12 @@ public class Rainbow extends SyntaxHighlighter
 
         private final String name;
 
-        Languages(String name)
-        {
+        Languages(String name) {
             this.name = name;
         }
 
         @Override
-        public String getLanguageName()
-        {
+        public String getLanguageName() {
             return name;
         }
     }

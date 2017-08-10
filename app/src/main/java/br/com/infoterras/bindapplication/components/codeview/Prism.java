@@ -1,7 +1,6 @@
-package br.tiagohm.codeview;
+package br.com.infoterras.bindapplication.components.codeview;
 
-public final class Prism extends SyntaxHighlighter
-{
+public final class Prism extends SyntaxHighlighter {
     private static final String HTML_SCRIPT =
             "<!DOCTYPE html>\n" +
                     "<html>\n" +
@@ -27,32 +26,27 @@ public final class Prism extends SyntaxHighlighter
     private static String CODE_CLASS = "";
     private static String CODE_TEXT = "";
 
-    public Prism()
-    {
+    public Prism() {
         setTheme(Themes.DEFAULT);
     }
 
     @Override
-    public Language[] getSupportedLanguages()
-    {
+    public Language[] getSupportedLanguages() {
         return Languages.values();
     }
 
     @Override
-    public Theme[] getSupportedThemes()
-    {
+    public Theme[] getSupportedThemes() {
         return Themes.values();
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Prism";
     }
 
     @Override
-    public final String getHtmlCode(String code, Language lang, int textSize)
-    {
+    public final String getHtmlCode(String code, Language lang, int textSize) {
         BODY_CSS = "margin: 0px !important;";
         CODE_CSS = "font-size: " + textSize + "px !important; line-height: 1.2 !important;";
         PRE_CSS = "margin: 0px !important; font-size: " + textSize + "px !important; line-height: 1.2 !important;";
@@ -69,8 +63,7 @@ public final class Prism extends SyntaxHighlighter
                 OTHERS_SCRIPTS);
     }
 
-    public enum Themes implements Theme
-    {
+    public enum Themes implements Theme {
         DEFAULT("default"),
         COY("coy"),
         DARK("dark"),
@@ -81,20 +74,17 @@ public final class Prism extends SyntaxHighlighter
 
         private final String name;
 
-        Themes(String name)
-        {
+        Themes(String name) {
             this.name = name;
         }
 
         @Override
-        public String getPath()
-        {
+        public String getPath() {
             return "file:///android_asset/prism/styles/" + name + ".css";
         }
     }
 
-    public enum Languages implements Language
-    {
+    public enum Languages implements Language {
         MARKUP("markup"),
         CSS("css"),
         C_LIKE("clike"),
@@ -222,14 +212,12 @@ public final class Prism extends SyntaxHighlighter
 
         private final String name;
 
-        Languages(String name)
-        {
+        Languages(String name) {
             this.name = name;
         }
 
         @Override
-        public String getLanguageName()
-        {
+        public String getLanguageName() {
             return name;
         }
     }

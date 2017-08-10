@@ -1,8 +1,8 @@
 package br.com.infoterras.bindapplication.activity;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -11,11 +11,12 @@ import android.widget.FrameLayout;
 import java.io.IOException;
 
 import br.com.infoterras.bindapplication.R;
+import br.com.infoterras.bindapplication.components.codeview.CodeView;
+import br.com.infoterras.bindapplication.components.codeview.HightlightJs;
 import br.com.infoterras.bindapplication.databinding.ActivityCodeViewBinding;
 import br.com.infoterras.bindapplication.model.Content;
 import br.com.infoterras.bindapplication.network.ConsumerService;
-import br.tiagohm.codeview.CodeView;
-import br.tiagohm.codeview.HightlightJs;
+
 import okhttp3.ResponseBody;
 
 public class CodeViewActivity extends AppCompatActivity implements ConsumerService.OnTaskCompleted<ResponseBody> {
@@ -56,7 +57,7 @@ public class CodeViewActivity extends AppCompatActivity implements ConsumerServi
                     .setCode(response.string())
                     .setLanguage(HightlightJs.Languages.AUTOIT)
                     .setTheme(HightlightJs.Themes.DRACULA)
-                    .setTextSize(14)
+                    .setTextSize(12)
                     .setShowLineNumber(true)
                     .apply();
         } catch (IOException e) {
