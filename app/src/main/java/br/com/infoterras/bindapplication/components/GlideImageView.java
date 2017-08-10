@@ -16,7 +16,7 @@ import br.com.infoterras.bindapplication.R;
  * Created by Gustavo on 01/12/2016.
  */
 
-public class GlideImageView extends ImageView {
+public class GlideImageView extends android.support.v7.widget.AppCompatImageView {
     public GlideImageView(Context context) {
         super(context);
     }
@@ -27,11 +27,6 @@ public class GlideImageView extends ImageView {
 
     public GlideImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public GlideImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @BindingAdapter("app:src")
