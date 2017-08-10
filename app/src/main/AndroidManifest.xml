@@ -11,17 +11,33 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.ContentActivity" />
-        <activity android:name=".activity.CodeViewActivity" />
-        <activity android:name=".activity.SplashActivity">
+
+        <activity
+            android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.ContentActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.CodeViewActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.SplashActivity"
+            android:theme="@style/AppTheme.FullScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -14,6 +14,14 @@
         <item name="android:windowAnimationStyle">@style/AppTheme.Animation</item>
     </style>
 
+    <style name="AppTheme.FullScreen" >
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">?attr/colorPrimaryDark</item>
+    </style>
+
     <style name="AppTheme.Animation">
         <item name="android:activityOpenEnterAnimation">@anim/enter_from_right</item>
         <item name="android:activityOpenExitAnimation">@anim/exit_to_left</item>
