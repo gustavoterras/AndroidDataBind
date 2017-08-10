@@ -47,7 +47,7 @@ public class RecyclerConfiguration extends BaseObservable {
         notifyPropertyChanged(BR.adapter);
     }
 
-    @BindingAdapter("app:configuration")
+    @BindingAdapter({"configuration"})
     public static void configureRecyclerView(RecyclerView recyclerView, RecyclerConfiguration configuration) {
         recyclerView.setLayoutManager(configuration.getLayoutManager());
         recyclerView.setItemAnimator(configuration.getItemAnimator());

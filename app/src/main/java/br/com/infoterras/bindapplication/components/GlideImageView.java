@@ -29,7 +29,7 @@ public class GlideImageView extends android.support.v7.widget.AppCompatImageView
         super(context, attrs, defStyleAttr);
     }
 
-    @BindingAdapter("app:src")
+    @BindingAdapter({"src"})
     public static void loadImage(ImageView view, String url) {
         Glide.with(view.getContext())
                 .load(url)
