@@ -8,10 +8,6 @@ import br.com.infoterras.bindapplication.BuildConfig;
 
 public class BuildUtil {
 
-    public boolean isDebug(){
-        return BuildConfig.DEBUG;
-    }
-
     public String versionCode(){
         return BuildConfig.VERSION_NAME;
     }

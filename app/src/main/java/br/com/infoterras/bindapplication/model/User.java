@@ -19,22 +19,6 @@ public class User implements Serializable {
     private String following;
     private String blog;
 
-    public User() {
-    }
-
-    public User(String name, String login, String avatar_url, String location, String email, String bio, String public_repos, String followers, String following, String blog) {
-        this.name = name;
-        this.login = login;
-        this.avatar_url = avatar_url;
-        this.location = location;
-        this.email = email;
-        this.bio = bio;
-        this.public_repos = public_repos;
-        this.followers = followers;
-        this.following = following;
-        this.blog = blog;
-    }
-
     public String getLogin() {
         return login;
     }

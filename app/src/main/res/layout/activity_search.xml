@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -53,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <EditText
                     android:id="@+id/edt_search"
@@ -61,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:maxLines="1"
-                    android:hint="Pesquisar"
+                    android:hint="@string/edt_search_hint"
                     app:theme="@style/TextAppearanceColorTheme.EditText" />
 
                 <ImageButton
@@ -74,12 +76,14 @@
                     android:onClick="onClick"
                     android:padding="5dp"
                     android:src="@drawable/ic_search" />
+
             </LinearLayout>
 
         </LinearLayout>
 
         <TextView
-            android:text="@{String.format(@string/build_content, build.versionCode() + '-' + (build.isDebug ? @string/debug : @string/release))}"
+            android:id="@+id/tv_version"
+            android:text="@{String.format(@string/build_content, build.versionCode())}"
             android:textColor="@color/white"
             android:gravity="center"
             android:layout_width="match_parent"

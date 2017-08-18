@@ -53,6 +53,7 @@
                 app:layout_collapseParallaxMultiplier="0.3">
 
                 <br.com.infoterras.bindapplication.components.GlideImageView
+                    android:id="@+id/img_user_avatar"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:transitionName="image"
@@ -66,6 +67,7 @@
                     android:paddingRight="@dimen/activity_horizontal_margin">
 
                     <TextView
+                        android:id="@+id/tv_userName"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:textStyle="bold"
                         android:textSize="18sp"
@@ -75,6 +77,7 @@
                         android:text="@{viewModel.user.name}" />
 
                     <TextView
+                        android:id="@+id/tv_userBio"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -82,6 +85,7 @@
                         android:text="@{viewModel.user.bio}" />
 
                     <TextView
+                        android:id="@+id/tv_userLocation"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -89,6 +93,7 @@
                         android:text="@{viewModel.user.location}" />
 
                     <TextView
+                        android:id="@+id/tv_userEmail"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -96,6 +101,7 @@
                         android:text="@{viewModel.user.email}" />
 
                     <TextView
+                        android:id="@+id/tv_userBlog"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -104,18 +110,21 @@
                         android:text="@{viewModel.user.blog}" />
 
                     <TextView
+                        android:id="@+id/tv_userPublicRepos"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@{String.format(@string/public_repos, viewModel.user.public_repos)}" />
 
                     <TextView
+                        android:id="@+id/tv_userFollowers"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@{String.format(@string/followers, viewModel.user.followers)}" />
 
                     <TextView
+                        android:id="@+id/tv_userFollowings"
                         style="@style/TextAppearanceColorTheme.TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
